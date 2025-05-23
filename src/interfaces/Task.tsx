@@ -17,3 +17,8 @@ export const TaskStatus = {
         label: "✅"
     }
 };
+
+export interface TaskContextInterface {
+    tasks: Task[];
+    setTasks: (tasks: Task[]) => void;
+}

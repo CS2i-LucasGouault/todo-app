@@ -1,6 +1,10 @@
-import { TaskStatus, type Task } from "../interfaces/Task";
+import { useContext } from "preact/hooks";
+import { type TaskContextInterface, TaskStatus } from "../interfaces/Task";
+import { TaskContext } from "../app";
 
-export function TaskTable({ tasks }: { tasks: Task[] }) {
+export function TaskTable() {
+    const taskContext = useContext<TaskContextInterface>(TaskContext);
+
     return <>
         <table class="table table-striped">
             <thead>
@@ -11,7 +15,7 @@ export function TaskTable({ tasks }: { tasks: Task[] }) {
                 </tr>
             </thead>
             <tbody>
-                {tasks.map((task) => (
+                {taskContext.tasks.map((task) => (
                     <tr key={task.id}>
                         <td>{task.id}</td>
                         <td>{task.label}</td>

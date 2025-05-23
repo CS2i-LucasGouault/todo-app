@@ -1,8 +1,12 @@
-import type { Task } from "../interfaces/Task";
+import { useContext } from "preact/hooks";
+import { TaskContext } from "../app";
+import type { Task, TaskContextInterface } from "../interfaces/Task";
 
-export function ResetButton({ setTasks }: { setTasks: (tasks: Task[]) => void }) {
+export function ResetButton() {
+    const taskContext = useContext<TaskContextInterface>(TaskContext);
+
     let resetTasks = () => {
-        setTasks([]);
+        taskContext.setTasks([]);
     }
 
     return <>

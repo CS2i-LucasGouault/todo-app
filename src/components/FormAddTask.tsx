@@ -1,14 +1,18 @@
-import type { Task } from "../interfaces/Task";
+import { useContext } from "preact/hooks";
+import { TaskContext } from "../app";
+import type { Task, TaskContextInterface } from "../interfaces/Task";
 
-export function FormAddTask({ tasks, setTasks }: { tasks: Task[], setTasks: (tasks: Task[]) => void }) {
+export function FormAddTask() {
+    const taskContext = useContext<TaskContextInterface>(TaskContext);
+
     let addTask = () => {
         let input = document.getElementById("taskInput") as HTMLInputElement;
         let task = input.value;
 
-        let newId = tasks.length > 0 ? tasks[tasks.length - 1].id + 1 : 1;
+        let newId = taskContext.tasks.length > 0 ? taskContext.tasks[taskContext.tasks.length - 1].id + 1 : 1;
 
         if (task) {
-            setTasks([...tasks, { id: newId, label: task, status: "todo" }]);
+            taskContext.setTasks([...taskContext.tasks, { id: newId, label: task, status: "todo" }]);
             input.value = "";
         }
     }
