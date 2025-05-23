@@ -1,7 +1,6 @@
-import { useContext, type ReactNode } from "preact/compat";
-import type { Task, TaskContextInterface } from "../interfaces/Task";
+import { type ReactNode } from "preact/compat";
+import type { Task } from "../interfaces/Task";
 import { StatusChangerButton } from "./StatusChangerButton";
-import { TaskContext } from "../app";
 
 export function TaskList({ tasks }: { tasks: Task[] }) {
     return <>

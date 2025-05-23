@@ -1,6 +1,6 @@
 import { useContext } from "preact/hooks";
 import { TaskContext } from "../app";
-import type { Task, TaskContextInterface } from "../interfaces/Task";
+import type { TaskContextInterface } from "../interfaces/Task";
 
 export function ResetButton() {
     const taskContext = useContext<TaskContextInterface>(TaskContext);
