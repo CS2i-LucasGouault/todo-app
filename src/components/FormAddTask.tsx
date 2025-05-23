@@ -1,6 +1,6 @@
 import { useContext } from "preact/hooks";
 import { TaskContext } from "../app";
-import type { Task, TaskContextInterface } from "../interfaces/Task";
+import type { TaskContextInterface } from "../interfaces/Task";
 
 export function FormAddTask() {
     const taskContext = useContext<TaskContextInterface>(TaskContext);
@@ -17,10 +17,16 @@ export function FormAddTask() {
         }
     }
 
+    let handleKeyDown = (event : KeyboardEvent) => {
+        if (event.key === "Enter") {
+            addTask();
+        }
+    }
+
     return <>
         <div class="row">
             <div class="col-md-10">
-                <input type="text" class="form-control w-100" id="taskInput" placeholder="Enter a task" />
+                <input type="text" class="form-control w-100" id="taskInput" placeholder="Enter a task" onKeyDown={handleKeyDown} />
             </div>
             <div class="col-md-2">
                 <button class="btn btn-outline-success mb-3" onClick={addTask}>Add</button>
